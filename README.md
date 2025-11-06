@@ -2,6 +2,8 @@
 
 Minimal, fast, and fully data-driven portfolio site.
 
+https://github.com/user-attachments/assets/b0d534e6-4345-4f7b-b014-419fc59ff79c
+
 ## Highlights
 
 - **Data-driven content**: Edit a single file `portfolioData.ts` to update personal info, navigation, projects, testimonials, skills, work experience, education, articles, newsletter, and footer.
