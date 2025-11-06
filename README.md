@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dynamic Portfolio (Next.js)
 
-## Getting Started
+Minimal, fast, and fully data-driven portfolio site.
 
-First, run the development server:
+## Highlights
+
+- **Data-driven content**: Edit a single file `portfolioData.ts` to update personal info, navigation, projects, testimonials, skills, work experience, education, articles, newsletter, and footer.
+- **Modern stack**: Next.js App Router + TypeScript.
+- **Styling**: Tailwind CSS with CSS variables and `tw-animate-css` utilities.
+- **UI primitives**: shadcn/ui components are wired where relevant.
+- **Responsive + accessible**: Semantic markup and keyboard-friendly components.
+- **Optimized images**: `next/image` for automatic sizing and optimization.
+- **Easy theming**: Tweak tokens in `app/globals.css` (light/dark, radii, charts, sidebar, etc.).
+
+## Quickstart
 
 ```bash
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customize Content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Edit `portfolio/portfolioData.ts` to change all content.
+- If using external image URLs, add their domains to `next.config.ts` under `images.domains`.
+- Update internal anchors via `navigation` in `portfolioData.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build & Deploy
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Deploy on any Node-compatible host (Vercel, Netlify, Fly, etc.).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Newsletter form is UI-only; connect your backend/service to handle submissions.
+- Internal navigation uses `next/link`. External links use `<a>`.
