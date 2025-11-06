@@ -184,13 +184,13 @@ export const portfolioData = {
       degree: "Master's degree in Computer Software Engineering",
       institution: "The University of Manchester",
       period: "2012 - 2013",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coat_of_arms_of_the_University_of_Manchester.svg/400px-Coat_of_arms_of_the_University_of_Manchester.svg.png",
+      logo: "https://d2bps9p1kiy4ka.cloudfront.net/5b09189f7285894d9130ccd0/50afffb9-f201-41d7-b40e-b9cb89336447.jpg",
     },
     {
       degree: "Bachelor's degree in Computer Software Engineering",
       institution: "Harvard University",
       period: "2009 - 2012",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/123px-Harvard_University_coat_of_arms.svg.png",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Harvard_University_coat_of_arms.svg",
     },
   ],
 
