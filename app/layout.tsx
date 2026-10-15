@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,10 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="swarm">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script id="swarm-fallback" strategy="beforeInteractive">
+          {`setTimeout(function(){if(document.documentElement.dataset.swarmLive==="1")return;document.querySelectorAll("[data-swarm]").forEach(function(el){el.setAttribute("data-built","1");el.style.transform="";el.removeAttribute("data-swarm-shift")})},12000)`}
+        </Script>
+        <noscript>
+          <style>{`html.swarm [data-swarm]{opacity:1!important;clip-path:none!important;transform:none!important}`}</style>
+        </noscript>
         {children}
       </body>
     </html>

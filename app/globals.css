@@ -118,3 +118,107 @@
     @apply bg-background text-foreground;
   }
 }
+
+html.swarm,
+html.swarm body {
+  overflow-x: clip;
+}
+
+html.swarm [data-swarm="frame"],
+html.swarm [data-swarm="card"] {
+  transition: opacity 180ms linear;
+}
+
+html.swarm [data-swarm="frame"]:not([data-built]),
+html.swarm [data-swarm="card"]:not([data-built]) {
+  opacity: 0;
+}
+
+html.swarm [data-swarm-shell]:not(:has([data-built])) {
+  border-color: transparent;
+}
+
+html.swarm [data-swarm="type"][data-reveal="x"]:not([data-built]) {
+  width: fit-content;
+  max-width: 100%;
+}
+
+html.swarm [data-swarm="type"]:not([data-built]) {
+  clip-path: inset(0 calc((1 - var(--swarm-p, 0)) * 100%) 0 0);
+}
+
+html.swarm [data-swarm="type"][data-reveal="y"]:not([data-built]) {
+  clip-path: inset(0 0 calc((1 - var(--swarm-p, 0)) * 100%) 0);
+}
+
+html.swarm [data-swarm-shift] {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.swarm [data-swarm="frame"]:not([data-built]),
+  html.swarm [data-swarm="card"]:not([data-built]) {
+    opacity: 1;
+  }
+
+  html.swarm [data-swarm="type"]:not([data-built]) {
+    clip-path: none;
+  }
+
+  html.swarm [data-swarm-shift] {
+    transform: none !important;
+  }
+}
+
+.swarm-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 80;
+  pointer-events: none;
+}
+
+.swarm-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+}
+
+.swarm-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.swarm-cursor svg {
+  overflow: visible;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.28));
+}
+
+.swarm-badge {
+  position: absolute;
+  transform: translateX(-50%);
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: #0d99ff;
+  color: #fff;
+  font: 600 11px/16px var(--font-geist-sans), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.swarm-caret {
+  position: absolute;
+  width: 1.5px;
+  pointer-events: none;
+  animation: swarm-blink 1s steps(1) infinite;
+}
+
+@keyframes swarm-blink {
+  50% {
+    opacity: 0;
+  }
+}

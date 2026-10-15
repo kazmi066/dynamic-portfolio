@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SwarmOverlay } from "@/components/swarm/SwarmOverlay";
 import { portfolioData } from "@/portfolioData";
 
 export default function Home() {
@@ -12,7 +13,9 @@ export default function Home() {
     <div>
       {/* Header */}
       <header className="sticky inset-x-0 top-0 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
-        <nav className="relative mx-2 mt-4 w-full max-w-2xl rounded-4xl border bg-background/70 py-2.5 backdrop-blur sm:mx-auto sm:flex sm:items-center sm:justify-between sm:px-4 sm:py-0">
+        <nav
+          data-swarm="frame"
+          className="relative mx-2 mt-4 w-full max-w-2xl rounded-4xl border bg-background/70 py-2.5 backdrop-blur sm:mx-auto sm:flex sm:items-center sm:justify-between sm:px-4 sm:py-0">
           <div className="flex items-center justify-between px-4 md:px-0">
             <div className="flex items-center">
               <Link
@@ -49,7 +52,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-2xl px-4 pt-10 sm:px-6 md:pt-16 lg:px-8">
           {/* Personal Info */}
           <div className="flex items-center gap-x-3">
-            <div className="shrink-0">
+            <div className="shrink-0" data-swarm="card">
               <Image
                 className="size-16 shrink-0 rounded-full object-cover"
                 src={data.personal.avatar}
@@ -60,10 +63,12 @@ export default function Home() {
             </div>
 
             <div className="grow">
-              <h1 className="text-lg font-medium text-foreground">
+              <h1
+                data-swarm="type"
+                className="text-lg font-medium text-foreground">
                 {data.personal.name}
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p data-swarm="type" className="text-sm text-muted-foreground">
                 {data.personal.title}
               </p>
             </div>
@@ -74,6 +79,7 @@ export default function Home() {
             {data.personal.bio.map((paragraph, idx) => (
               <p
                 key={idx}
+                data-swarm="type"
                 className={cn("text-sm text-muted-foreground", {
                   "mt-3": idx > 0,
                 })}>
@@ -82,7 +88,7 @@ export default function Home() {
             ))}
 
             {/* Contacts */}
-            <ul className="mt-5 flex flex-col gap-y-3">
+            <ul data-swarm="frame" className="mt-5 flex flex-col gap-y-3">
               {data.contacts.map((contact) => (
                 <li key={contact.name} className="flex items-center gap-x-2.5">
                   <svg
@@ -113,12 +119,17 @@ export default function Home() {
           {/* Projects */}
           {data.projects.length > 0 && (
             <div className="mt-10 sm:mt-14" id="projects">
-              <h2 className="mb-5 font-medium text-foreground">Projects</h2>
+              <h2
+                data-swarm="type"
+                className="mb-5 font-medium text-foreground">
+                Projects
+              </h2>
 
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {data.projects.map((project) => (
                   <a
                     key={project.title}
+                    data-swarm="card"
                     className="group relative block overflow-hidden rounded-lg"
                     href={project.link}>
                     <Image
@@ -156,12 +167,19 @@ export default function Home() {
           {/* Testimonials */}
           {data.testimonials.length > 0 && (
             <div className="mt-10 sm:mt-14">
-              <h2 className="mb-3 font-medium text-foreground">Testimonials</h2>
+              <h2
+                data-swarm="type"
+                className="mb-3 font-medium text-foreground">
+                Testimonials
+              </h2>
 
-              <div className="grid grid-cols-1 gap-x-3 divide-y divide-gray-200 border-y dark:divide-neutral-700 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+              <div
+                data-swarm-shell
+                className="grid grid-cols-1 gap-x-3 divide-y divide-gray-200 border-y dark:divide-neutral-700 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
                 {data.testimonials.map((testimonial, idx) => (
                   <div
                     key={testimonial.name}
+                    data-swarm="card"
                     className={cn("py-6 sm:px-4", {
                       "sm:-ms-4": idx === 0,
                     })}>
@@ -196,9 +214,13 @@ export default function Home() {
           {/* Skills */}
           {data.skills.length > 0 && (
             <div className="my-10 sm:my-14">
-              <h2 className="mb-5 font-medium text-foreground">Skills</h2>
+              <h2
+                data-swarm="type"
+                className="mb-5 font-medium text-foreground">
+                Skills
+              </h2>
 
-              <div className="space-y-3">
+              <div data-swarm="frame" className="space-y-3">
                 {data.skills.map((skill) => (
                   <dl
                     key={skill.category}
@@ -228,7 +250,9 @@ export default function Home() {
           {/* Work Experience */}
           {data.workExperience.length > 0 && (
             <div className="mt-10 sm:mt-14" id="work">
-              <h2 className="mb-5 font-medium text-foreground">
+              <h2
+                data-swarm="type"
+                className="mb-5 font-medium text-foreground">
                 Work experience
               </h2>
 
@@ -236,6 +260,7 @@ export default function Home() {
                 {data.workExperience.map((job) => (
                   <div
                     key={`${job.company}-${job.period}-${job.role}`}
+                    data-swarm="card"
                     className="group relative flex gap-x-5">
                     <div className="relative after:absolute after:bottom-2 after:start-3 after:top-8 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 group-last:after:hidden dark:after:bg-neutral-700">
                       <div className="relative z-10 flex size-6 items-center justify-center">
@@ -308,12 +333,17 @@ export default function Home() {
           {/* Education */}
           {data.education.length > 0 && (
             <div className="mt-10 sm:mt-14">
-              <h2 className="mb-3 font-medium text-foreground">Education</h2>
+              <h2
+                data-swarm="type"
+                className="mb-3 font-medium text-foreground">
+                Education
+              </h2>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {data.education.map((edu) => (
                   <div
                     key={`${edu.institution}-${edu.degree}`}
+                    data-swarm="card"
                     className="rounded-lg border p-4">
                     {edu.logo && (
                       <Image
@@ -345,11 +375,15 @@ export default function Home() {
           {/* Articles */}
           {data.articles.length > 0 && (
             <div className="my-10 sm:my-14" id="articles">
-              <h2 className="mb-5 font-medium text-foreground">Articles</h2>
+              <h2
+                data-swarm="type"
+                className="mb-5 font-medium text-foreground">
+                Articles
+              </h2>
 
               <ul className="space-y-10">
                 {data.articles.map((article) => (
-                  <li key={article.title}>
+                  <li key={article.title} data-swarm="type">
                     <p className="mb-2 text-sm text-muted-foreground">
                       {article.year}
                     </p>
@@ -375,11 +409,13 @@ export default function Home() {
           {/* Newsletter */}
           {data.newsletter.enabled && (
             <div className="my-10 sm:my-14">
-              <h2 className="mb-5 font-medium text-foreground">
+              <h2
+                data-swarm="type"
+                className="mb-5 font-medium text-foreground">
                 {data.newsletter.title}
               </h2>
 
-              <form>
+              <form data-swarm="frame">
                 <div className="flex flex-col items-center gap-2 rounded-lg border p-1.5 sm:flex-row">
                   <div className="relative w-full">
                     <label htmlFor="hero-input" className="sr-only">
@@ -438,7 +474,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mx-auto w-full max-w-2xl px-4 sm:px-6 lg:px-8">
-        <div className="border-t py-6">
+        <div data-swarm="frame" className="border-t py-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <p className="text-xs text-muted-foreground">
@@ -465,7 +501,13 @@ export default function Home() {
             </ul>
           </div>
         </div>
+        <p
+          data-swarm="type"
+          className="pb-8 text-xs text-muted-foreground">
+          A swarm of agents placed this page while you scrolled.
+        </p>
       </footer>
+      <SwarmOverlay />
     </div>
   );
 }
